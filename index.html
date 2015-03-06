@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Morsel - Morse Code Generator</title>
+    <link href="style/bootstrap.css" rel="stylesheet">
+    <link href="style/concord.css" rel="stylesheet">
+    <link href="style/font-awesome.css" rel="stylesheet">
+    <script src="script/jquery-1.9.1.min.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/concord.js"></script>
+    <script src="script/concordUtils.js"></script>
+    <script src="script/webaudio_tools.js"></script>
+    <script src="script/morse.js"></script>
+    <script src="script/index.js"></script>
+    <style>
+        body {
+            background-color: #333;
+        }
+        h1 { color: #f5f5f5; }
+        div.divOutlinerContainer {
+            clear:both;
+            width: 50%;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 1px solid gainsboro;
+            min-height: 200px;
+            max-height: 80%;
+            overflow: auto;
+            padding: 6px;
+            background-color: whitesmoke;
+        }
+        div.statusBar {
+            color:whitesmoke;
+            width: 50%;
+            margin-top: 75px;
+            padding-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        div.statusBar li.brand {
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="divForkMe">
+    <a href="http://github.com/daveajones/morsel"><img
+            style="position: absolute; top: 0; right: 0; border: 0; z-index: 1050;"
+            src="http://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png" alt="Fork me on GitHub"></a>
+</div>
+<div class="statusBar">
+    <ul class="list-inline"><li class="brand">Morsel</li><li><i id="soundStatus" class="status fa fa-tty"></i></li><li id="soundStatus"></li></ul>
+</div>
+<div class="divOutlinerContainer">
+    <div id="outliner">
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#outliner").concord({
+            "callbacks": {
+                "opKeystroke": opKeystrokeCallback
+            },
+            "prefs": {
+                "outlineFont": "Georgia",
+                "outlineFontSize": 18,
+                "outlineLineHeight": 24,
+                "renderMode": false,
+                "readonly": false,
+                "typeIcons": appTypeIcons
+            },
+        });
+        opXmlToOutline(initialOpmltext);
+    });
+</script>
+</body>
+</html>
