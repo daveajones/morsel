@@ -8,6 +8,9 @@ function opKeystrokeCallback(event) {
     if ( event.which == 13 )  {
         //Make sure there is no html in the string and that it only contains lowercase alphanumeric
         morsestring = opGetLineText();
+        if(morsestring == "") {
+            morsestring = " ";
+        }
         morsestring = stripTags(morsestring);
         if( morsestring == "<3" || morsestring == "xoxo" ) {
             morsestring = " 88 ";
